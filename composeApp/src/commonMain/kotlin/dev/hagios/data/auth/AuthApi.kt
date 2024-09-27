@@ -51,9 +51,26 @@ suspend inline fun<reified T> HttpResponse.getBodyIfSuccess(): T {
         in 200..299 -> {
             return body()
         }
+        422 -> {
+            if (this.bodyAsText().contains("invalid password")) {
+                throw InvalidPasswordException
+            }
+            if (this.bodyAsText().contains("unknown email")) {
+                throw UnknownEmailException
+            }
+            if (this.bodyAsText().contains("already taken")) {
+                throw EmailAddressTakenException
+            }
+            throw Exception("${status.value} ${bodyAsText()}")
+        }
         500 -> {
-            throw Exception("Server down")
+            throw ServerIssueException
         }
         else -> throw Exception("${status.value} ${bodyAsText()}")
     }
 }
+
+object InvalidPasswordException : Exception("Wrong password")
+object UnknownEmailException : Exception("Wrong password")
+object EmailAddressTakenException : Exception("Email address already taken")
+object ServerIssueException : Exception("Server issue")

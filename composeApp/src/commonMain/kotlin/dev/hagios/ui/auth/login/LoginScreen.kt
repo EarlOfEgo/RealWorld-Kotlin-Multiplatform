@@ -2,6 +2,7 @@ package dev.hagios.ui.auth.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Button
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
@@ -53,13 +55,15 @@ data object LoginScreen : Tab {
     override fun Content() {
         val navigator = LocalNavigator.currentOrThrow
         val screenModel: LoginScreenModel = getScreenModel()
-        LoginScreenContent(
-            screenModel,
-            onSignupClicked = {
-                navigator.replace(SignupScreen)
+        Box {
+            if (screenModel.loading) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
             }
-        )
-        val value = screenModel.loginRequest.collectAsState(null).value
+            LoginScreenContent(screenModel, onSignupClicked = { navigator.replace(SignupScreen) })
+        }
+        val value = screenModel.loginRequest.collectAsState().value
         LaunchedEffect(value) {
             value?.let {
                 navigator.replace(UserProfileScreen)
@@ -111,6 +115,7 @@ private fun LoginScreenContent(
                 Text("janedoe@email.com")
             },
             colors = SecondaryTextFieldDefaults(),
+            isError = screenModel.emailError
         )
         var showPassword by rememberSaveable { mutableStateOf(false) }
         Text("Your password")
@@ -132,6 +137,7 @@ private fun LoginScreenContent(
                 Text("password")
             },
             colors = SecondaryTextFieldDefaults(),
+            isError = screenModel.passwordError
         )
         Spacer(Modifier.height(32.dp))
         Button(

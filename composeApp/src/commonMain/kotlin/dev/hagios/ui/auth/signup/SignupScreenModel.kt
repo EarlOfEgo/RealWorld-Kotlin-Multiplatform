@@ -4,10 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
-import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
 import dev.hagios.data.auth.AuthRepository
+import dev.hagios.data.auth.EmailAddressTakenException
 import dev.hagios.data.auth.models.User
+import dev.hagios.ui.auth.AuthBaseScreenModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -18,15 +19,9 @@ import kotlinx.coroutines.launch
 
 class SignupScreenModel(
     private val authRepository: AuthRepository
-) : ScreenModel {
+) : AuthBaseScreenModel() {
 
     var username by mutableStateOf("")
-        private set
-
-    var email by mutableStateOf("")
-        private set
-
-    var password by mutableStateOf("")
         private set
 
     val allowSignup: StateFlow<Boolean> =
@@ -46,26 +41,22 @@ class SignupScreenModel(
 
     val registerRequest = _registerRequest.asStateFlow()
 
-    fun updateEmail(input: String) {
-        email = input
-    }
-
     fun updateName(input: String) {
         username = input
     }
 
-    fun updatePassword(input: String) {
-        password = input
-    }
-
     fun registerUser() {
         screenModelScope.launch {
+            loading = true
             try {
                 val user = authRepository.registerUser(username, email, password)
                 _registerRequest.emit(user)
+            } catch (_: EmailAddressTakenException) {
+                emailError = true
             } catch (e: Exception) {
                 println(e)
             }
+            loading = false
         }
     }
 }
