@@ -28,6 +28,17 @@ import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import dev.hagios.ui.article.details.ArticleDetailsScreen
+import org.jetbrains.compose.resources.stringResource
+import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.create_article_screen_body_label
+import realworld.composeapp.generated.resources.create_article_screen_body_placeholder
+import realworld.composeapp.generated.resources.create_article_screen_description_label
+import realworld.composeapp.generated.resources.create_article_screen_description_placeholder
+import realworld.composeapp.generated.resources.create_article_screen_publish_button
+import realworld.composeapp.generated.resources.create_article_screen_tags_label
+import realworld.composeapp.generated.resources.create_article_screen_tags_placeholder
+import realworld.composeapp.generated.resources.create_article_screen_title_label
+import realworld.composeapp.generated.resources.create_article_screen_title_placeholder
 
 data object CreateArticleScreen : Screen {
     @Composable
@@ -61,38 +72,38 @@ private fun CreateArticleScreenContent(screenModel: CreateArticleScreenModel, mo
             OutlinedTextField(
                 value = screenModel.title,
                 onValueChange = screenModel::updateTitle,
-                label = { Text("Title") },
+                label = { Text(stringResource(Res.string.create_article_screen_title_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Article title") }
+                placeholder = { Text(stringResource(Res.string.create_article_screen_title_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.description,
                 onValueChange = screenModel::updateDescription,
-                label = { Text("Description") },
+                label = { Text(stringResource(Res.string.create_article_screen_description_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Short description of the article") }
+                placeholder = { Text(stringResource(Res.string.create_article_screen_description_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.body,
                 onValueChange = screenModel::updateBody,
-                label = { Text("Text") },
+                label = { Text(stringResource(Res.string.create_article_screen_body_label)) },
                 modifier = Modifier.fillMaxWidth().weight(1f)
                     .scrollable(rememberScrollState(), orientation = Orientation.Vertical),
-                placeholder = { Text("Write your article here") }
+                placeholder = { Text(stringResource(Res.string.create_article_screen_body_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.tags,
                 onValueChange = screenModel::updateTags,
-                label = { Text("Tags") },
+                label = { Text(stringResource(Res.string.create_article_screen_tags_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Comma separated") }
+                placeholder = { Text(stringResource(Res.string.create_article_screen_tags_placeholder)) }
             )
             Button(
                 onClick = { screenModel.publish() },
                 modifier = Modifier.fillMaxWidth(),
                 enabled = screenModel.allowPublish.collectAsState().value
             ) {
-                Text("Publish")
+                Text(stringResource(Res.string.create_article_screen_publish_button))
             }
         }
     }

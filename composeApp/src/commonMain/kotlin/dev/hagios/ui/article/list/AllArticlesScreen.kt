@@ -39,7 +39,10 @@ import io.kamel.core.Resource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.all_articles_list_screen_image_content_description
+import realworld.composeapp.generated.resources.all_articles_list_screen_title
 import realworld.composeapp.generated.resources.edit_square_24dp
 
 
@@ -59,7 +62,7 @@ data object ArticlesList : Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val title = "Articles"
+            val title = stringResource(Res.string.all_articles_list_screen_title)
             val icon = rememberVectorPainter(Icons.Default.Home)
             return remember {
                 TabOptions(
@@ -123,7 +126,7 @@ private fun Author(author: Author) {
             )
         KamelImage(
             resource = painter,
-            contentDescription = "Author image",
+            contentDescription = stringResource(Res.string.all_articles_list_screen_image_content_description),
             modifier = Modifier
                 .size(32.dp)
                 .clip(CircleShape)

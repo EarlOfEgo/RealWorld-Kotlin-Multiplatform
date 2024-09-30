@@ -45,7 +45,19 @@ import dev.hagios.ui.auth.SecondaryTextFieldDefaults
 import dev.hagios.ui.auth.login.LoginScreen
 import dev.hagios.ui.profile.UserProfileScreen
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.signup_screen_create_account_button
+import realworld.composeapp.generated.resources.signup_screen_email_label
+import realworld.composeapp.generated.resources.signup_screen_email_placeholder
+import realworld.composeapp.generated.resources.signup_screen_go_to_login_title1
+import realworld.composeapp.generated.resources.signup_screen_go_to_login_title2
+import realworld.composeapp.generated.resources.signup_screen_headline
+import realworld.composeapp.generated.resources.signup_screen_name_label
+import realworld.composeapp.generated.resources.signup_screen_name_placeholder
+import realworld.composeapp.generated.resources.signup_screen_password_label
+import realworld.composeapp.generated.resources.signup_screen_password_placeholder
+import realworld.composeapp.generated.resources.signup_screen_title
 import realworld.composeapp.generated.resources.visibility_24dp
 import realworld.composeapp.generated.resources.visibility_off_24dp
 
@@ -74,7 +86,7 @@ data object SignupScreen : Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val title = "Signup"
+            val title = stringResource(Res.string.signup_screen_title)
             val icon = rememberVectorPainter(Icons.Default.Person)
 
             return remember {
@@ -102,35 +114,35 @@ private fun SignupScreenContent(
     ) {
         Text(
             modifier = Modifier.align(CenterHorizontally),
-            text = "Create your account",
+            text = stringResource(Res.string.signup_screen_headline),
             style = MaterialTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(32.dp))
-        Text("Your full name")
+        Text(stringResource(Res.string.signup_screen_name_label))
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = screenModel.username,
             onValueChange = onNameChanged,
             singleLine = true,
             placeholder = {
-                Text("Input your first name and last name")
+                Text(stringResource(Res.string.signup_screen_name_placeholder))
             },
             colors = SecondaryTextFieldDefaults(),
         )
-        Text("Your email")
+        Text(stringResource(Res.string.signup_screen_email_label))
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = screenModel.email,
             onValueChange = onEmailChanged,
             singleLine = true,
             placeholder = {
-                Text("janedoe@email.com")
+                Text(stringResource(Res.string.signup_screen_email_placeholder))
             },
             colors = SecondaryTextFieldDefaults(),
             isError = screenModel.emailError
         )
         var showPassword by rememberSaveable { mutableStateOf(false) }
-        Text("Your password")
+        Text(stringResource(Res.string.signup_screen_password_label))
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = screenModel.password,
@@ -146,7 +158,7 @@ private fun SignupScreenContent(
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             placeholder = {
-                Text("password")
+                Text(stringResource(Res.string.signup_screen_password_placeholder))
             },
             colors = SecondaryTextFieldDefaults(),
         )
@@ -156,15 +168,15 @@ private fun SignupScreenContent(
             onClick = screenModel::registerUser,
             enabled = screenModel.allowSignup.collectAsState().value
         ) {
-            Text("Create Account")
+            Text(stringResource(Res.string.signup_screen_create_account_button))
         }
         Spacer(Modifier.height(32.dp))
         Row(modifier = Modifier.clickable {
             onSignInClicked()
         }.align(alignment = CenterHorizontally)) {
-            Text("Already have an account?")
+            Text(stringResource(Res.string.signup_screen_go_to_login_title1))
             Spacer(modifier = Modifier.width(4.dp))
-            Text("Sign in", color = MaterialTheme.colors.primary)
+            Text(stringResource(Res.string.signup_screen_go_to_login_title2), color = MaterialTheme.colors.primary)
         }
     }
 }

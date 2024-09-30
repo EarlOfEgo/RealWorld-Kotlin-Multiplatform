@@ -27,6 +27,20 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import org.jetbrains.compose.resources.stringResource
+import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.edit_profile_screen_bio_label
+import realworld.composeapp.generated.resources.edit_profile_screen_bio_placeholder
+import realworld.composeapp.generated.resources.edit_profile_screen_email_label
+import realworld.composeapp.generated.resources.edit_profile_screen_email_placeholder
+import realworld.composeapp.generated.resources.edit_profile_screen_password_label
+import realworld.composeapp.generated.resources.edit_profile_screen_password_placeholder
+import realworld.composeapp.generated.resources.edit_profile_screen_picture_url_label
+import realworld.composeapp.generated.resources.edit_profile_screen_picture_url_placeholder
+import realworld.composeapp.generated.resources.edit_profile_screen_update_button
+import realworld.composeapp.generated.resources.edit_profile_screen_username_label
+import realworld.composeapp.generated.resources.edit_profile_screen_username_placeholder
+import realworld.composeapp.generated.resources.generic_back_button_label
 
 data object EditProfileScreen: Screen {
 
@@ -38,7 +52,7 @@ data object EditProfileScreen: Screen {
         Scaffold(topBar = {
             TopAppBar(backgroundColor = Color.White, elevation = 0.dp) {
                 IconButton(onClick = { navigator.pop() }) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, "back")
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(Res.string.generic_back_button_label))
                 }
             }
         }) { paddingValues ->
@@ -62,45 +76,45 @@ private fun EditProfileScreenContent(screenModel: EditProfileScreenModel, modifi
             OutlinedTextField(
                 value = screenModel.username,
                 onValueChange = screenModel::updateUsername,
-                label = { Text("Username") },
+                label = { Text(stringResource(Res.string.edit_profile_screen_username_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("You username") }
+                placeholder = { Text(stringResource(Res.string.edit_profile_screen_username_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.pictureUrl,
                 onValueChange = screenModel::updatePictureUrl,
-                label = { Text("Profile picture URL") },
+                label = { Text(stringResource(Res.string.edit_profile_screen_picture_url_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("The URL of your profile picture") }
+                placeholder = { Text(stringResource(Res.string.edit_profile_screen_picture_url_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.bio,
                 onValueChange = screenModel::updateBio,
-                label = { Text("Bio") },
+                label = { Text(stringResource(Res.string.edit_profile_screen_bio_label)) },
                 modifier = Modifier.fillMaxWidth().weight(1f)
                     .scrollable(rememberScrollState(), orientation = Orientation.Vertical),
-                placeholder = { Text("Short bio of yourself") }
+                placeholder = { Text(stringResource(Res.string.edit_profile_screen_bio_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.email,
                 onValueChange = screenModel::updateEmail,
-                label = { Text("Email") },
+                label = { Text(stringResource(Res.string.edit_profile_screen_email_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("New Email") }
+                placeholder = { Text(stringResource(Res.string.edit_profile_screen_email_placeholder)) }
             )
             OutlinedTextField(
                 value = screenModel.password,
                 onValueChange = screenModel::updatePassword,
-                label = { Text("Password") },
+                label = { Text(stringResource(Res.string.edit_profile_screen_password_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("New Password") }
+                placeholder = { Text(stringResource(Res.string.edit_profile_screen_password_placeholder)) }
             )
             Button(
                 onClick = { screenModel.update() },
                 modifier = Modifier.fillMaxWidth(),
                 enabled = screenModel.allowUpdate.collectAsState().value
             ) {
-                Text("Update")
+                Text(stringResource(Res.string.edit_profile_screen_update_button))
             }
         }
     }

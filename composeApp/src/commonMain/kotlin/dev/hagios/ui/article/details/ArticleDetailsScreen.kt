@@ -35,8 +35,11 @@ import io.kamel.core.Resource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.article_details_screen_image_content_description
 import realworld.composeapp.generated.resources.edit_square_24dp
+import realworld.composeapp.generated.resources.generic_back_button_label
 
 data class ArticleDetailsScreen(val slug: String) : Screen {
 
@@ -48,7 +51,7 @@ data class ArticleDetailsScreen(val slug: String) : Screen {
         Scaffold(topBar = {
             TopAppBar(backgroundColor = Color.White, elevation = 0.dp) {
                 IconButton(onClick = { navigator.pop() }) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, "back")
+                    Icon(Icons.AutoMirrored.Filled.ArrowBack, stringResource(Res.string.generic_back_button_label))
                 }
             }
         }) { paddingValues ->
@@ -84,7 +87,7 @@ fun ArticleDetailsSuccessContent(article: Article, modifier: Modifier = Modifier
             )
             KamelImage(
                 resource = painter,
-                contentDescription = "Author image",
+                contentDescription = stringResource(Res.string.article_details_screen_image_content_description),
                 modifier = Modifier
                     .size(56.dp)
                     .clip(CircleShape)

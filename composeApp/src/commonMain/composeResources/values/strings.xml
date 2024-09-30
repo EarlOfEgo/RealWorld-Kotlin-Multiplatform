@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_article_screen_title_label">Title</string>
+    <string name="create_article_screen_title_placeholder">Article title</string>
+    <string name="create_article_screen_description_label">Description</string>
+    <string name="create_article_screen_description_placeholder">Short description of the article</string>
+    <string name="create_article_screen_body_label">Text</string>
+    <string name="create_article_screen_body_placeholder">Write your article here</string>
+    <string name="create_article_screen_tags_label">Tags</string>
+    <string name="create_article_screen_tags_placeholder">Comma separated</string>
+    <string name="create_article_screen_publish_button">Publish</string>
+
+    <string name="article_details_screen_image_content_description">Author image</string>
+
+    <string name="all_articles_list_screen_title">Articles</string>
+    <string name="all_articles_list_screen_image_content_description">Author image</string>
+
+    <string name="all_articles_list_screen_success_content_description">Create article</string>
+
+    <string name="user_articles_list_screen_title">Stories</string>
+
+    <string name="login_screen_title">Login</string>
+    <string name="login_screen_headline">Sign in with email</string>
+    <string name="login_screen_email_label">Your email</string>
+    <string name="login_screen_email_placeholder">janedoe@email.com</string>
+    <string name="login_screen_password_label">Your password</string>
+    <string name="login_screen_password_placeholder">Password</string>
+    <string name="login_screen_login_button">Login</string>
+    <string name="login_screen_go_to_signup_title1">Don't have an account?</string>
+    <string name="login_screen_go_to_signup_title2">Sign up</string>
+
+    <string name="signup_screen_title">Signup</string>
+    <string name="signup_screen_headline">Create your account</string>
+    <string name="signup_screen_name_label">Your full name</string>
+    <string name="signup_screen_name_placeholder">Input your first name and last name</string>
+    <string name="signup_screen_email_label">Your email</string>
+    <string name="signup_screen_email_placeholder">janedoe@email.com</string>
+    <string name="signup_screen_password_label">Your password</string>
+    <string name="signup_screen_password_placeholder">Password</string>
+    <string name="signup_screen_create_account_button">Create Account</string>
+    <string name="signup_screen_go_to_login_title1">Already have an account?</string>
+    <string name="signup_screen_go_to_login_title2">Sign in</string>
+
+    <string name="user_profile_screen_title">Profile</string>
+    <string name="user_profile_screen_edit_profile_button">Edit profile</string>
+    <string name="user_profile_screen_settings_button_content_description">Settings</string>
+    <string name="user_profile_screen_user_image_content_description">User image</string>
+    <string name="user_profile_screen_about_title">About</string>
+    <string name="user_profile_screen_about_no_content_description1">You haven't added any information here yet</string>
+    <string name="user_profile_screen_about_no_content_description2">Add a short bio</string>
+
+    <string name="edit_profile_screen_title">Edit profile</string>
+    <string name="edit_profile_screen_username_label">Username</string>
+    <string name="edit_profile_screen_username_placeholder">Your username</string>
+    <string name="edit_profile_screen_picture_url_label">Profile picture URL</string>
+    <string name="edit_profile_screen_picture_url_placeholder">The URL of your profile picture</string>
+    <string name="edit_profile_screen_bio_label">Bio</string>
+    <string name="edit_profile_screen_bio_placeholder">Short bio of yourself</string>
+    <string name="edit_profile_screen_email_label">Email</string>
+    <string name="edit_profile_screen_email_placeholder">New Email</string>
+    <string name="edit_profile_screen_password_label">Password</string>
+    <string name="edit_profile_screen_password_placeholder">New Password</string>
+    <string name="edit_profile_screen_update_button">Update</string>
+
+
+    <string name="generic_back_button_label">Back</string>
+    <string name="generic_error_label">Error</string>"
+
+
+</resources>

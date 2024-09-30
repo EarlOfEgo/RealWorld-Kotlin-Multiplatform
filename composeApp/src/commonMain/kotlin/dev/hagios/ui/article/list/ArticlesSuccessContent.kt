@@ -25,8 +25,11 @@ import app.cash.paging.compose.itemContentType
 import app.cash.paging.compose.itemKey
 import dev.hagios.data.article.models.Article
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.all_articles_list_screen_success_content_description
 import realworld.composeapp.generated.resources.edit_square_24dp
+import realworld.composeapp.generated.resources.generic_error_label
 
 @Composable
 fun ArticlesSuccessContent(
@@ -49,7 +52,7 @@ fun ArticlesSuccessContent(
             if (articles.loadState.errors()) {
                 item {
                     Column(modifier = Modifier.fillMaxWidth()) {
-                        Text("Error!!")
+                        Text(stringResource(Res.string.generic_error_label))
                         Button({ articles.retry() }) {
                             Text("retry")
                         }
@@ -75,7 +78,7 @@ fun ArticlesSuccessContent(
         ) {
             Icon(
                 painterResource(Res.drawable.edit_square_24dp),
-                contentDescription = "Create article"
+                contentDescription = stringResource(Res.string.all_articles_list_screen_success_content_description)
             )
         }
     }

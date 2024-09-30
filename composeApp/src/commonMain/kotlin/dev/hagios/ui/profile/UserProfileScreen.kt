@@ -48,8 +48,16 @@ import io.kamel.core.Resource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import realworld.composeapp.generated.resources.Res
 import realworld.composeapp.generated.resources.edit_square_24dp
+import realworld.composeapp.generated.resources.user_profile_screen_about_no_content_description1
+import realworld.composeapp.generated.resources.user_profile_screen_about_no_content_description2
+import realworld.composeapp.generated.resources.user_profile_screen_about_title
+import realworld.composeapp.generated.resources.user_profile_screen_edit_profile_button
+import realworld.composeapp.generated.resources.user_profile_screen_settings_button_content_description
+import realworld.composeapp.generated.resources.user_profile_screen_title
+import realworld.composeapp.generated.resources.user_profile_screen_user_image_content_description
 
 data object UserProfileScreen : Tab {
 
@@ -73,7 +81,7 @@ data object UserProfileScreen : Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val title = "Profile"
+            val title = stringResource(Res.string.user_profile_screen_title)
             val icon = rememberVectorPainter(Icons.Default.Person)
 
             return remember {
@@ -98,7 +106,7 @@ private fun UserProfileSuccessContent(
             onClick = goToSettings,
             modifier = Modifier.align(Alignment.End).padding(end = 16.dp)
         ) {
-            Icon(Icons.Default.Settings, contentDescription = "Settings")
+            Icon(Icons.Default.Settings, contentDescription = stringResource(Res.string.user_profile_screen_settings_button_content_description))
         }
         Column(modifier = Modifier.padding(horizontal = 32.dp).fillMaxWidth()) {
             Row {
@@ -110,7 +118,7 @@ private fun UserProfileSuccessContent(
                     )
                 KamelImage(
                     resource = painter,
-                    contentDescription = "User image",
+                    contentDescription = stringResource(Res.string.user_profile_screen_user_image_content_description),
                     modifier = Modifier
                         .size(48.dp)
                         .clip(CircleShape)
@@ -122,7 +130,7 @@ private fun UserProfileSuccessContent(
             }
             Spacer(Modifier.height(32.dp))
             Button(onClick = editProfile) {
-                Text("Edit profile")
+                Text(stringResource(Res.string.user_profile_screen_edit_profile_button))
             }
             Spacer(Modifier.height(48.dp))
 
@@ -178,11 +186,11 @@ data class UserBio(val bio: String?) : Tab {
                     }
                 ) {
                     Text(
-                        "You haven't added any information here yet",
+                        stringResource(Res.string.user_profile_screen_about_no_content_description1),
                         style = MaterialTheme.typography.caption
                     )
                     Text(
-                        "Add a short bio",
+                        stringResource(Res.string.user_profile_screen_about_no_content_description2),
                         style = MaterialTheme.typography.caption,
                         textDecoration = TextDecoration.Underline
                     )
@@ -194,7 +202,7 @@ data class UserBio(val bio: String?) : Tab {
     override val options: TabOptions
         @Composable
         get() {
-            val title = "About"
+            val title = stringResource(Res.string.user_profile_screen_about_title)
 
             return remember {
                 TabOptions(

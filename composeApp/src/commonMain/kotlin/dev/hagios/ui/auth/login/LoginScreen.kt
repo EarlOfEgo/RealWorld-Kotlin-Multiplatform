@@ -45,7 +45,16 @@ import dev.hagios.ui.auth.SecondaryTextFieldDefaults
 import dev.hagios.ui.auth.signup.SignupScreen
 import dev.hagios.ui.profile.UserProfileScreen
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import realworld.composeapp.generated.resources.Res
+import realworld.composeapp.generated.resources.login_screen_email_label
+import realworld.composeapp.generated.resources.login_screen_email_placeholder
+import realworld.composeapp.generated.resources.login_screen_go_to_signup_title1
+import realworld.composeapp.generated.resources.login_screen_go_to_signup_title2
+import realworld.composeapp.generated.resources.login_screen_login_button
+import realworld.composeapp.generated.resources.login_screen_password_label
+import realworld.composeapp.generated.resources.login_screen_password_placeholder
+import realworld.composeapp.generated.resources.login_screen_title
 import realworld.composeapp.generated.resources.visibility_24dp
 import realworld.composeapp.generated.resources.visibility_off_24dp
 
@@ -101,24 +110,24 @@ private fun LoginScreenContent(
     ) {
         Text(
             modifier = Modifier.align(CenterHorizontally),
-            text = "Sign in with email",
+            text = stringResource(Res.string.login_screen_title),
             style = MaterialTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(32.dp))
-        Text("Your email")
+        Text(stringResource(Res.string.login_screen_email_label))
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = screenModel.email,
             onValueChange = onEmailChanged,
             singleLine = true,
             placeholder = {
-                Text("janedoe@email.com")
+                Text(stringResource(Res.string.login_screen_email_placeholder))
             },
             colors = SecondaryTextFieldDefaults(),
             isError = screenModel.emailError
         )
         var showPassword by rememberSaveable { mutableStateOf(false) }
-        Text("Your password")
+        Text(stringResource(Res.string.login_screen_password_label))
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
             value = screenModel.password,
@@ -134,7 +143,7 @@ private fun LoginScreenContent(
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             placeholder = {
-                Text("password")
+                Text(stringResource(Res.string.login_screen_password_placeholder))
             },
             colors = SecondaryTextFieldDefaults(),
             isError = screenModel.passwordError
@@ -145,15 +154,15 @@ private fun LoginScreenContent(
             onClick = screenModel::loginUser,
             enabled = screenModel.allowLogin.collectAsState().value
         ) {
-            Text("Login")
+            Text(stringResource(Res.string.login_screen_login_button))
         }
         Spacer(Modifier.height(32.dp))
         Row(modifier = Modifier.clickable {
             onSignupClicked()
         }.align(alignment = Alignment.CenterHorizontally)) {
-            Text("Don't have an account?")
+            Text(stringResource(Res.string.login_screen_go_to_signup_title1))
             Spacer(modifier = Modifier.width(4.dp))
-            Text("Sign up", color = MaterialTheme.colors.primary)
+            Text(stringResource(Res.string.login_screen_go_to_signup_title2), color = MaterialTheme.colors.primary)
         }
     }
 }
