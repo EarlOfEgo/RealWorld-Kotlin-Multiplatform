@@ -18,7 +18,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import dev.hagios.ui.article.list.ArticlesList
 import dev.hagios.ui.auth.login.LoginScreen
-import dev.hagios.ui.user.UserProfileScreen
+import dev.hagios.ui.profile.UserProfileScreen
 
 data object MainScreen : Screen {
     @Composable

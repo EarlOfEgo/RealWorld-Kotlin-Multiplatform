@@ -43,7 +43,7 @@ import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import dev.hagios.ui.auth.SecondaryTextFieldDefaults
 import dev.hagios.ui.auth.login.LoginScreen
-import dev.hagios.ui.user.UserProfileScreen
+import dev.hagios.ui.profile.UserProfileScreen
 import org.jetbrains.compose.resources.painterResource
 import realworld.composeapp.generated.resources.Res
 import realworld.composeapp.generated.resources.visibility_24dp

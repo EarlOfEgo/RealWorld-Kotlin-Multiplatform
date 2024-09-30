@@ -22,7 +22,8 @@ import dev.hagios.ui.article.list.AllArticleScreenModel
 import dev.hagios.ui.article.list.UserArticlesScreenModel
 import dev.hagios.ui.auth.login.LoginScreenModel
 import dev.hagios.ui.auth.signup.SignupScreenModel
-import dev.hagios.ui.user.UserProfileScreenModel
+import dev.hagios.ui.profile.UserProfileScreenModel
+import dev.hagios.ui.profile.edit.EditProfileScreenModel
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -117,6 +118,7 @@ val screenModelsModule = module {
     factoryOf(::MainScreenModel)
     factoryOf(::UserProfileScreenModel)
     factoryOf(::CreateArticleScreenModel)
+    factoryOf(::EditProfileScreenModel)
     factory { (query: ArticleQuery?) ->
         UserArticlesScreenModel(get(named(authorized)) { parametersOf(query) })
     }

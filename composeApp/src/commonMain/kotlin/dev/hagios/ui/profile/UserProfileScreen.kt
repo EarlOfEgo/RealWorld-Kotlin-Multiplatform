@@ -1,4 +1,4 @@
-package dev.hagios.ui.user
+package dev.hagios.ui.profile
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -34,12 +34,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.koin.getScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
 import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import dev.hagios.data.auth.models.User
 import dev.hagios.ui.article.list.UserArticleList
+import dev.hagios.ui.article.list.getRoot
+import dev.hagios.ui.profile.edit.EditProfileScreen
 import io.kamel.core.Resource
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
@@ -52,6 +56,7 @@ data object UserProfileScreen : Tab {
     @Composable
     override fun Content() {
         val screenModel: UserProfileScreenModel = getScreenModel()
+        val navigator = LocalNavigator.currentOrThrow
 
         when (val state = screenModel.profile.collectAsState().value) {
             is UserProfileUiState.Error -> Text(state.toString())
@@ -59,7 +64,9 @@ data object UserProfileScreen : Tab {
             is UserProfileUiState.Success -> UserProfileSuccessContent(
                 state.data,
                 goToSettings = {},
-                editProfile = {})
+                editProfile = {
+                    navigator.getRoot().push(EditProfileScreen)
+                })
         }
     }
 
@@ -154,6 +161,7 @@ private fun TabTextButton(navigator: TabNavigator, tab: Tab) {
 data class UserBio(val bio: String?) : Tab {
     @Composable
     override fun Content() {
+        val navigator = LocalNavigator.currentOrThrow
         Box(modifier = Modifier.fillMaxSize().padding(32.dp)) {
             if (bio != null) {
                 Text(
@@ -165,7 +173,9 @@ data class UserBio(val bio: String?) : Tab {
                 Column(
                     modifier = Modifier.align(
                         Alignment.Center
-                    )
+                    ).clickable {
+                        navigator.getRoot().push(EditProfileScreen)
+                    }
                 ) {
                     Text(
                         "You haven't added any information here yet",

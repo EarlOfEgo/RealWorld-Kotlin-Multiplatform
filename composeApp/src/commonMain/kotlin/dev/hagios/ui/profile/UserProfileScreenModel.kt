@@ -1,11 +1,10 @@
-package dev.hagios.ui.user
+package dev.hagios.ui.profile
 
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
-import dev.hagios.data.auth.AuthRepository
 import dev.hagios.data.auth.models.User
 import dev.hagios.data.user.UserRepository
-import dev.hagios.ui.user.UserProfileUiState.Success
+import dev.hagios.ui.profile.UserProfileUiState.Success
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.catch
