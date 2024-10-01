@@ -16,13 +16,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
-import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
@@ -55,7 +53,6 @@ import realworld.composeapp.generated.resources.user_profile_screen_about_no_con
 import realworld.composeapp.generated.resources.user_profile_screen_about_no_content_description2
 import realworld.composeapp.generated.resources.user_profile_screen_about_title
 import realworld.composeapp.generated.resources.user_profile_screen_edit_profile_button
-import realworld.composeapp.generated.resources.user_profile_screen_settings_button_content_description
 import realworld.composeapp.generated.resources.user_profile_screen_title
 import realworld.composeapp.generated.resources.user_profile_screen_user_image_content_description
 
@@ -106,7 +103,7 @@ private fun UserProfileSuccessContent(
             onClick = goToSettings,
             modifier = Modifier.align(Alignment.End).padding(end = 16.dp)
         ) {
-            Icon(Icons.Default.Settings, contentDescription = stringResource(Res.string.user_profile_screen_settings_button_content_description))
+//            Icon(Icons.Default.Settings, contentDescription = stringResource(Res.string.user_profile_screen_settings_button_content_description))
         }
         Column(modifier = Modifier.padding(horizontal = 32.dp).fillMaxWidth()) {
             Row {
