@@ -36,9 +36,9 @@ Following libraries are used:
 
 # Android vs
 
-| Screen         | Android                               | iOS                               |
-|----------------|---------------------------------------|-----------------------------------|
-| Article List   | ![](media/list_android.png)           | ![](media/list_ios.png)           |
-| Signup         | ![](media/signup_android.png)         | ![](media/signup_ios.png)         |
+| Screen         | Android                               | iOS                              |
+|----------------|---------------------------------------|----------------------------------|
+| Article List   | ![](media/list_android.png)           | ![](media/list_ios.png)          |
+| Signup         | ![](media/signup_android.png)         | ![](media/signup_ios.png)        |
 | Create Article | ![](media/create_article_android.png) | ![](media/create_article_ios.png) |
-| User Profile   | ![](media/profile_android.png)        | ![](media/profile__ios.png)       |
+| User Profile   | ![](media/profile_android.png)        | ![](media/profile_ios.png)       |
