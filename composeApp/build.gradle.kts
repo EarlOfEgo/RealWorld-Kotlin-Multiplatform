@@ -68,9 +68,7 @@ kotlin {
 
             implementation(libs.kotlinx.atomicfu)
 
-
-
-            implementation("co.touchlab:stately-common:2.0.5")
+            implementation(libs.stately.common)
         }
     }
 }
